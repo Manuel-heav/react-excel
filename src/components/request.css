@@ -1,0 +1,15 @@
+.pinkify::placeholder{
+    color: #ff544e;
+}
+
+.redify::placeholder{
+    color: #d76060;
+}
+
+.greenify::placeholder{
+    color: green;
+}
+
+.yelloify{
+    background-color: yellow;
+}

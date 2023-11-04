@@ -1,0 +1,44 @@
+h4{
+    background-color: #002060;
+    color: #fff;
+    padding:4px;
+}
+
+h5{
+    font-size: 12px;
+    margin-top: -5px;
+}
+td{
+    margin-right: 10px;
+}
+
+.borrower_body tr td input{
+    border: none;
+    width: 90%;
+    font-size: 11px;
+}
+
+.borrower_body tr td input:focus{
+    outline: none;
+}
+
+input:disabled::placeholder{
+    color: #000;
+}
+
+.highlight::placeholder{
+    text-decoration: underline;
+}
+
+.bolder::placeholder{
+    font-weight: 600;
+}
+
+::placeholder {
+    color:#5f6cff;
+    opacity: 1; /* Firefox */
+  }
+  
+::-ms-input-placeholder { /* Edge 12 -18 */
+    color: #5f6cff;
+}
