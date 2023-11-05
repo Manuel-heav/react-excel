@@ -384,7 +384,7 @@ const LoanBreakdown = () => {
               <input type="text" placeholder='Negative' className='redify'/>
               </td>
               <td>
-              <input type="text" placeholder='$144,300'  value={costsAndUses[6] === 0 ? '' : `$${costsAndUses[6]}`} onChange={(e) => handleCostsAndUses(6, e.target.value.replace(/\$/g, ''))}/>
+              <input type="text" className='bolderr' placeholder='$144,300'  value={costsAndUses[6] === 0 ? '' : `$${costsAndUses[6]}`} onChange={(e) => handleCostsAndUses(6, e.target.value.replace(/\$/g, ''))}/>
               </td>
             </tr>
 
@@ -519,7 +519,7 @@ const LoanBreakdown = () => {
               <input type="text" placeholder='Negative' className='redify'/>
               </td>
               <td>
-              <input style={{color: "#d76060"}} type="text" placeholder={`$${formatNumberWithCommas(130782 + costsAndUses.reduce((acc, val) => acc + val, 0).toFixed(2))}`} disabled className='bolder'/>
+              <input style={{color: "#d76060"}} type="text" placeholder={`$${formatNumberWithCommas(130782 + costsAndUses.reduce((acc, val) => acc + val, 0).toFixed(2))}`} disabled className='bolderr'/>
               </td>
             </tr>
             <br />
@@ -537,7 +537,7 @@ const LoanBreakdown = () => {
               <input type="text" placeholder='Positive' className='redify'/>
               </td>
               <td>
-              <input style={{color: "#d76060"}}  type="text" placeholder={`$${formatNumberWithCommas(10532 + costsAndUses.reduce((acc, val) => acc + val, 0).toFixed(2))}`} disabled className='bolder'/>
+              <input style={{color: "#d76060"}}  type="text" placeholder={`$${formatNumberWithCommas(10532 + costsAndUses.reduce((acc, val) => acc + val, 0).toFixed(2))}`} disabled className='bolderr'/>
               </td>
             </tr>
           </tbody>

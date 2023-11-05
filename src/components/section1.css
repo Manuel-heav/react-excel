@@ -34,6 +34,12 @@ input:disabled::placeholder{
     font-weight: 600;
 }
 
+.bolderr::placeholder{
+    font-weight: 600;
+    color: #d76060 !important;
+}
+
+
 ::placeholder {
     color:#5f6cff;
     opacity: 1; /* Firefox */
