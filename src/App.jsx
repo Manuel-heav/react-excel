@@ -3,9 +3,13 @@ import './App.css'
 import LoanSubmission from './LoanSubmission';
 
 function App() {
+
+  const handleData = (data) => {
+    console.log('App data:', data);
+  };
   return (
     <>
-     <LoanSubmission />
+     <LoanSubmission onData={handleData}/>
     </>
   )
 }

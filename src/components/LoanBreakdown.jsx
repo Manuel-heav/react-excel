@@ -1,23 +1,50 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import formatNumberWithCommas from './utils';
 
-const LoanBreakdown = () => {
+const LoanBreakdown = (props) => {
   const [gst, setGst] = useState([0,0]);
   const [totalCosts, setTotalCosts] = useState([0]);
-  const [firstMortgageBalance, setFirstMortgageBalance] = useState([0]);
-  const [firstMortgageExit, setFirstMortgageExit] = useState([0]);
-  const [secondMortgageBalance, setSecondMortgageBalance] = useState([0]);
-  const [secondMortgageExit, setSecondMortgageExit] = useState([0]);
-  const [payoutCreditors, setPayoutCreditors] = useState([0]);
-  const [ancillary, setAncillary] = useState([0]);
-  const [lenderEstab, setLenderEstab] = useState([0]);
-  const [brokerageFee, setBrokerageFee] = useState([0]);
-  const [lenderLegalFee, setLenderLegalFee] = useState([0]);
-  const [prepaidInterest, setPrepaidInterest] = useState([0]);
-  const [borrowerCash, setBorrowerCash] = useState([0]);
+  const [firstMortgageBalance, setFirstMortgageBalance] = useState(["$0"]);
+  const [firstMortgageExit, setFirstMortgageExit] = useState(["$0"]);
+  const [secondMortgageBalance, setSecondMortgageBalance] = useState(["$0"]);
+  const [secondMortgageExit, setSecondMortgageExit] = useState(["$0"]);
+  const [payoutCreditors, setPayoutCreditors] = useState(["$0"]);
+  const [ancillary, setAncillary] = useState(["$0"]);
+  const [lenderEstab, setLenderEstab] = useState(["$0"]);
+  const [brokerageFee, setBrokerageFee] = useState(["$0"]);
+  const [lenderLegalFee, setLenderLegalFee] = useState(["$0"]);
+  const [prepaidInterest, setPrepaidInterest] = useState(["$0"]);
+  const [borrowerCash, setBorrowerCash] = useState(["$0"]);
+  const [contractPrice, setContractPrice] = useState("$1,000,000");
+  const [stampDuty, setStampDuty] = useState("$0");
+  const [depositPaid, setDepositPaid] = useState("$0");
+
 
   const [costsAndUses, setCostsAndUses] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
 
+  useEffect(() => {
+    if (props.onData) {
+      props.onData({
+        gst,
+        totalCosts,
+        firstMortgageBalance,
+        firstMortgageExit,
+        secondMortgageBalance,
+        secondMortgageExit,
+        payoutCreditors,
+        ancillary,
+        lenderEstab,
+        brokerageFee,
+        lenderLegalFee,
+        prepaidInterest,
+        borrowerCash,
+        costsAndUses,
+        contractPrice,
+        stampDuty,
+        depositPaid
+      });
+    }
+  }, [gst, totalCosts, firstMortgageBalance, firstMortgageExit, secondMortgageBalance, secondMortgageExit, payoutCreditors, ancillary, lenderEstab, brokerageFee, lenderLegalFee, prepaidInterest, borrowerCash, costsAndUses]);
   const handleCostsAndUses = (index, value) => {
     const updatedCostsAndUses = [...costsAndUses];
     updatedCostsAndUses[index] = parseFloat(value) || 0;
@@ -63,7 +90,12 @@ const LoanBreakdown = () => {
               <input type="text" placeholder='Positive' className='redify'/>
               </td>
               <td>
-                <input type="text" placeholder='$1,202,500' disabled/>
+              <input 
+                  type="text" 
+                  placeholder='$0'
+                  value={firstMortgageBalance} 
+                  onChange={e => setFirstMortgageBalance(e.target.value)}
+                />
               </td>
             </tr>
             <tr>
@@ -81,7 +113,12 @@ const LoanBreakdown = () => {
               <input type="text" placeholder='Positive' className='redify'/>
               </td>
               <td>
-                <input type="text" placeholder='$0' disabled/>
+              <input 
+                  type="text" 
+                  placeholder='$0' 
+                  value={secondMortgageBalance} 
+                  onChange={e => setSecondMortgageBalance(e.target.value)}
+                />
               </td>
             </tr>
 
@@ -169,7 +206,14 @@ const LoanBreakdown = () => {
               <input type="text" placeholder='Negative' className='redify'/>
               </td>
               <td>
-                <input type="text" placeholder='($1,000,000)'className='redify' />
+              <input 
+                  className='bolderr'
+                  style={{color: "red"}}
+                  type="text" 
+                  placeholder='$0' 
+                  value={contractPrice} 
+                  onChange={e => setContractPrice(e.target.value)}
+                />
               </td>
             </tr>
 
@@ -192,7 +236,7 @@ const LoanBreakdown = () => {
               <input type="text" placeholder='Negative' className='redify'/>
               </td>
               <td>
-              <input type="text" placeholder="120,000" style={{color: "#d76060"}} value={`($${formatNumberWithCommas(gstPrice.toFixed(2))})`} className='redify' />
+              <input onChange={e => setGst(e.target.value)} type="text" placeholder="120,000" style={{color: "#d76060"}} value={`($${formatNumberWithCommas(gstPrice.toFixed(2))})`} className='redify' />
               </td>
             </tr>
 
@@ -201,7 +245,17 @@ const LoanBreakdown = () => {
                 <input className='notBold' type="text" placeholder='Stamp Duty' disabled/>
               </td>
               <td>
-                <input type="text" placeholder='SA' />
+              <select style={{width: "47%", border: "none", outline: "none", color: "#6b79ff", fontSize: "11px"}}>
+                  <option value="SA" disabled selected>SA</option>
+                  <option value="State">State</option>
+                  <option value="NSW">NSW</option>
+                  <option value="VIC">VIC</option>
+                  <option value="QLD">QLD</option>
+                  <option value="WA">WA</option>
+                  <option value="TAS">TAS</option>
+                  <option value="ACT">ACT</option>
+                  <option value="NT">NT</option>
+                </select>
               </td>
                 <td style={{width: "3%"}}>
               </td>
@@ -210,7 +264,14 @@ const LoanBreakdown = () => {
               <input type="text" placeholder='Negative' className='redify'/>
               </td>
               <td>
-                <input type="text" placeholder='$0' className='greenify'/>
+                <input 
+                  className='greenify'
+                  style={{color: "green"}}
+                  type="text" 
+                  placeholder='$0' 
+                  value={stampDuty} 
+                  onChange={e => setStampDuty(e.target.value)}
+                />
               </td>
             </tr>
 
@@ -227,7 +288,13 @@ const LoanBreakdown = () => {
               <input type="text" placeholder='Positive' className='redify highlight'/>
               </td>
               <td>
-                <input type="text" placeholder='$0' />
+              <input 
+                  style={{color: "red"}}
+                  type="text" 
+                  placeholder='$0' 
+                  value={depositPaid} 
+                  onChange={e => setDepositPaid(e.target.value)}
+                />
               </td>
             </tr>
 
@@ -262,7 +329,7 @@ const LoanBreakdown = () => {
               <input type="text" placeholder='Negative' className='redify'/>
               </td>
               <td>
-              <input type="text" placeholder='$1,850,000'  value={costsAndUses[0] === 0 ? '' : `$${costsAndUses[0]}`} onChange={(e) => handleCostsAndUses(0, e.target.value.replace(/\$/g, ''))}/>
+              <input type="text" placeholder='$1,850,000' value={costsAndUses[0] === 0 ? '' : `$${costsAndUses[0]}`} onChange={(e) => handleCostsAndUses(0, e.target.value.replace(/\$/g, ''))}/>
               </td>
             </tr>
 

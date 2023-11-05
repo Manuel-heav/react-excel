@@ -4,11 +4,12 @@ import Borrower from './borrower'
 import Security from './Security'
 import Request from './Request'
 import LoanBreakdown from './LoanBreakdown'
-const Section_1 = () => {
+const Section_1 = (props) => {
+  // console.log('Section_1 onData:', props.onData);
   return (
     <div>
-      <Borrower />
-      <Security />
+      <Borrower onData={props.onData}/>
+      <Security onData={props.onData}/>
       <LoanBreakdown />
     </div>
   )

@@ -11,7 +11,7 @@ const ExpectedIssues = () => {
                 <input type="text" placeholder='Credit History' disabled/>
               </td>
               <td>
-                <input type="text" placeholder='Tick' className="redify"/>
+                <input type="checkbox" placeholder='Tick' className="redify"/>
               </td>
               <td>
                 <input type="text" placeholder='Optional Comment' />
@@ -22,7 +22,7 @@ const ExpectedIssues = () => {
                 <input type="text" placeholder='Loan Repayment History' disabled/>
               </td>
               <td>
-                <input type="text" placeholder='Tick' className="redify"/>
+                <input type="checkbox" placeholder='Tick' className="redify"/>
               </td>
               <td>
                 <input type="text" placeholder='Optional Comment' />
@@ -33,7 +33,7 @@ const ExpectedIssues = () => {
                 <input type="text" placeholder='LVR' disabled/>
               </td>
               <td>
-                <input type="text" placeholder='Tick' className="redify"/>
+                <input type="checkbox" placeholder='Tick' className="redify"/>
               </td>
               <td>
                 <input type="text" placeholder='Optional Comment' />
@@ -45,7 +45,7 @@ const ExpectedIssues = () => {
                 <input type="text" placeholder='Rate Expectations' disabled/>
               </td>
               <td>
-                <input type="text" placeholder='Tick' className="redify"/>
+                <input type="checkbox" placeholder='Tick' className="redify"/>
               </td>
               <td>
                 <input type="text" placeholder='Optional Comment' />

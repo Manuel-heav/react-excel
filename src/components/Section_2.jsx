@@ -4,12 +4,12 @@ import ExpectedIssues from './ExpectedIssues'
 import Assets from './Assets'
 import DocumentUpload from './DocumentUpload'
 
-const Section_2 = () => {
+const Section_2 = (props) => {
   return (
     <div>
       <Request />
       <ExpectedIssues />
-      <Assets />
+      <Assets onData={props.onData} />
       <DocumentUpload />
     </div>
   )

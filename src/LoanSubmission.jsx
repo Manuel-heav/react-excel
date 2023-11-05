@@ -4,11 +4,12 @@ import Section_2 from './components/Section_2'
 import Section_3 from './components/Section_3'
 import './section.css'
 
-const LoanSubmission = () => {
+const LoanSubmission = (props) => {
+  console.log('LoanSubmission onData:', props.onData);
   return (
     <div className='section_container'>
-        <Section_1 />
-        <Section_2 />
+        <Section_1 onData = {props.onData}/>
+        <Section_2 onData = {props.onData}/>
         <Section_3 />
     </div>
   )

@@ -1,6 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 
-const Borrower = () => {
+const Borrower = (props) => {
+  const [brokerContact, setBrokerContact] = useState('');
+  const [borrower, setBorrower] = useState('');
+  const [guarantor, setGuarantor] = useState('');
+  const [tel, setTel] = useState('');
+  const [email, setEmail] = useState('');
+
+  useEffect(() => {
+    if (props.onData) {
+      console.log('Borrower data:', { brokerContact, borrower, guarantor, tel, email });
+      props.onData({
+        brokerContact,
+        borrower,
+        guarantor,
+        tel,
+        email,
+      });
+    }
+  }, [brokerContact, borrower, guarantor, tel, email]);
+
   return (
     <div className="borrower">
         <h4>Borrower Details</h4>
@@ -16,24 +35,54 @@ const Borrower = () => {
           <tbody className='borrower_body'>
           <tr>
               <td>
-                <input type="text" placeholder='Name' />
+              <input 
+                  type="text" 
+                  placeholder='Name' 
+                  value={brokerContact} 
+                  onChange={e => setBrokerContact(e.target.value)}
+                />
               </td>
               <td>
-                <input type="text" placeholder='Person/Company Name' />
+              <input 
+                  type="text" 
+                  placeholder='Name' 
+                  value={borrower} 
+                  onChange={e => setBorrower(e.target.value)}
+                />
               </td>
               <td>
-                <input type="text" placeholder='Person/Company Name' />
+              <input 
+                  type="text" 
+                  placeholder='Name' 
+                  value={guarantor} 
+                  onChange={e => setGuarantor(e.target.value)}
+                />
               </td>
               <td>
-                <input type="text" placeholder='Tel' />
+              <input 
+                  type="text" 
+                  placeholder='Name' 
+                  value={tel} 
+                  onChange={e => setTel(e.target.value)}
+                />
               </td>
               <td>
-                <input type="text" placeholder='Email' />
+              <input 
+                  type="text" 
+                  placeholder='Name' 
+                  value={email} 
+                  onChange={e => setEmail(e.target.value)}
+                />
               </td>
             </tr>
             <tr>
               <td>
-                <input type="text" placeholder='Tel' />
+              <input 
+                  type="text" 
+                  placeholder='Name' 
+                  value={brokerContact} 
+                  onChange={e => setBrokerContact(e.target.value)}
+                />
               </td>
               <td>
                 <input type="text" placeholder='Person/Company Name' />

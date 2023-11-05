@@ -47,10 +47,16 @@ const Request = () => {
                 <input type="text" placeholder='Expected Proof of Income' disabled/>
               </td>
               <td>
-                <input type="text" placeholder='Select' />
+              <select style={{width: "47%", border: "none", outline: "none", color: "#6b79ff", fontSize: "11px"}}>
+                  <option value="Select" disabled selected>Select</option>
+                  <option value="Self Declaration Only">Self Declaration Only</option>
+                  <option value="Accountants Letter">Accountants Letter</option>
+                  <option value="Lease Doc">Lease Doc</option>
+                  <option value="BAS">BAS</option>
+                  <option value="Full Doc">Full Doc</option>
+                </select>
               </td>
               <td>
-                <input type="text" placeholder='Select as default' className="redify"/>
               </td>
             </tr>
 
@@ -59,10 +65,9 @@ const Request = () => {
                 <input type="text" placeholder='Preferred Settlement Date' disabled/>
               </td>
               <td>
-                <input type="text" placeholder='01-Nov-23' />
+                <input style={{width: "40%", color: "blue"}} type="date" placeholder='01-Nov-23' />
               </td>
               <td>
-                <input type="text" placeholder='Date box' className='redify'/>
               </td>
             </tr>
 
@@ -71,13 +76,11 @@ const Request = () => {
                 <input type="text" placeholder='Critical Settlement Date' disabled/>
               </td>
               <td>
-                <input type="text" placeholder='01-Nov-23' className='pinkify'/>
+                <input style={{width: "40%", color: "#d76060" }} type="date" placeholder='01-Nov-23' className='pinkify'/>
               </td>
               <td>
-                <input type="text" placeholder='Date box' className='pinkify'/>
               </td>
               <td>
-                <input type="text" placeholder='Keep P in' className='pinkify'/>
               </td>
             </tr>
 
@@ -86,13 +89,16 @@ const Request = () => {
                 <input type="text" placeholder='Critical Reason' disabled/>
               </td>
               <td>
-                <input type="text" placeholder='Current loan exp' className='pinkify'/>
+              <select style={{width: "47%", border: "none", outline: "none", color: "#d76060", fontSize: "11px"}}>
+                  <option value="Current Loan Expires">Current Loan Expires</option>
+                  <option value="Contract Expires">Contract Expires</option>
+                  <option value="Urgent Creditor Payment">Urgent Creditor Payment</option>
+                </select>
               </td>
               <td>
-                <input type="text" placeholder='Select as default' className="redify"/>
+              
               </td>
               <td>
-                <input type="text" placeholder='Keep P in' className='pinkify'/>
               </td>
             </tr>
 
@@ -106,7 +112,7 @@ const Request = () => {
               <td>
               </td>
               <td>
-                <input type="text" placeholder='Keep P in' className='pinkify'/>
+                <input type="text" placeholder='' className='pinkify'/>
               </td>
             </tr>
           </tbody>

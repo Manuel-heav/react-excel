@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import formatNumberWithCommas from './utils';
 
-const Security = () => {
+const Security = (props) => {
   const [securityData, setSecurityData] = useState([
     {
       streetAddress: '',
@@ -20,14 +20,24 @@ const Security = () => {
   const [newLVR, setNewLVR] = useState([0,0,0,0,0]);
   const [newLoan, setNewLoan] = useState([0,0,0,0,0]);
   const [currentLoan, setCurrentLoan] = useState([0,0,0,0,0]);
-  const [cashOut, setCashOut] = useState([0,0,0,0,0]);
+  const [cashOut, setCashOut] = useState([702500,0,0,0,0,0]);
 
   const handleEstValueChange = (index, value) => {
     const updatedEstValue = [...estValue];
     updatedEstValue[index] = parseFloat(value) || 0;
     setEstValue(updatedEstValue);
   };
-
+  useEffect(() => {
+    if (props.onData) {
+      props.onData({
+        estValue,
+        newLVR,
+        newLoan,
+        currentLoan,
+        cashOut,
+      });
+    }
+  }, [estValue, newLVR, newLoan, currentLoan, cashOut]);
   const handleNewLVRChange = (index, value) => {
     const numericValue = parseFloat(value.replace('%', '')) || 0;
     const updatedNewLVR = [...newLVR];
@@ -39,6 +49,16 @@ const Security = () => {
     const updatedCurrentLoan = [...currentLoan];
     updatedCurrentLoan[index] = parseFloat(value) || 0;
     setCurrentLoan(updatedCurrentLoan);
+    setCashOut(updatedCurrentLoan)
+  };
+
+  const handleCashOutChange = (index, value) => {
+    const updatedCashOut = [...cashOut];
+    updatedCashOut[index] = parseFloat(value.replace(/\$/g, '')) || 0;
+    setCashOut(updatedCashOut);
+      const updatedCurrentLoan = [...currentLoan];
+    updatedCurrentLoan[index] = updatedCashOut[index];
+    setCurrentLoan(updatedCurrentLoan);
   };
 
   return (
@@ -48,7 +68,7 @@ const Security = () => {
           <thead>
             <td style={{width: "15%"}}>Street Address</td>
             <td>Suburb</td>
-            <td>State</td>
+            <td  style={{width: "15%"}}>State</td>
             <td>Postcode</td>
             <td>Est Value</td>
             <td className='smaller'>New LVR</td>
@@ -66,7 +86,17 @@ const Security = () => {
                 <input type="text" placeholder='Perth' />
               </td>
               <td>
-                <input type="text" placeholder='State' />
+                <select style={{width: "47%", border: "none", outline: "none", color: "#6b79ff", fontSize: "12px"}}>
+                  <option value="State" disabled selected>State</option>
+                  <option value="NSW">NSW</option>
+                  <option value="VIC">VIC</option>
+                  <option value="QLD">QLD</option>
+                  <option value="WA">WA</option>
+                  <option value="SA">SA</option>
+                  <option value="TAS">TAS</option>
+                  <option value="ACT">ACT</option>
+                  <option value="NT">NT</option>
+                </select>
               </td>
               <td>
                 <input type="text" placeholder='8000' />
@@ -100,7 +130,19 @@ const Security = () => {
                 <input type="text" placeholder='Suburb' />
               </td>
               <td>
-                <input type="text" placeholder='State' />
+              <td>
+                <select style={{width: "47%%", border: "none", outline: "none", color: "#6b79ff", fontSize: "12px"}}>
+                  <option value="State" disabled selected>State</option>
+                  <option value="NSW">NSW</option>
+                  <option value="VIC">VIC</option>
+                  <option value="QLD">QLD</option>
+                  <option value="WA">WA</option>
+                  <option value="SA">SA</option>
+                  <option value="TAS">TAS</option>
+                  <option value="ACT">ACT</option>
+                  <option value="NT">NT</option>
+                </select>
+              </td>
               </td>
               <td>
                 <input type="text" placeholder='Postcode' />
@@ -134,8 +176,18 @@ const Security = () => {
                 <input type="text" placeholder='Suburb' />
               </td>
               <td>
-                <input type="text" placeholder='State' />
-              </td>
+  <select style={{width: "47%", border: "none", outline: "none", color: "#6b79ff", fontSize: "12px"}}>
+    <option value="State" disabled selected>State</option>
+    <option value="NSW">NSW</option>
+    <option value="VIC">VIC</option>
+    <option value="QLD">QLD</option>
+    <option value="WA">WA</option>
+    <option value="SA">SA</option>
+    <option value="TAS">TAS</option>
+    <option value="ACT">ACT</option>
+    <option value="NT">NT</option>
+  </select>
+</td>
               <td>
                 <input type="text" placeholder='Postcode' />
               </td>
@@ -168,8 +220,18 @@ const Security = () => {
                 <input type="text" placeholder='Suburb' />
               </td>
               <td>
-                <input type="text" placeholder='State' />
-              </td>
+  <select style={{width: "47%", border: "none", outline: "none", color: "#6b79ff", fontSize: "12px"}}>
+    <option value="State" disabled selected>State</option>
+    <option value="NSW">NSW</option>
+    <option value="VIC">VIC</option>
+    <option value="QLD">QLD</option>
+    <option value="WA">WA</option>
+    <option value="SA">SA</option>
+    <option value="TAS">TAS</option>
+    <option value="ACT">ACT</option>
+    <option value="NT">NT</option>
+  </select>
+</td>
               <td>
                 <input type="text" placeholder='Postcode' />
               </td>
@@ -202,8 +264,18 @@ const Security = () => {
                 <input type="text" placeholder='Suburb' />
               </td>
               <td>
-                <input type="text" placeholder='State' />
-              </td>
+  <select style={{width: "47%", border: "none", outline: "none", color: "#6b79ff", fontSize: "12px"}}>
+    <option value="State" disabled selected>State</option>
+    <option value="NSW">NSW</option>
+    <option value="VIC">VIC</option>
+    <option value="QLD">QLD</option>
+    <option value="WA">WA</option>
+    <option value="SA">SA</option>
+    <option value="TAS">TAS</option>
+    <option value="ACT">ACT</option>
+    <option value="NT">NT</option>
+  </select>
+</td>
               <td>
                 <input type="text" placeholder='Postcode' />
               </td>
@@ -257,7 +329,7 @@ const Security = () => {
               <input type="text" placeholder={`$${formatNumberWithCommas(currentLoan.reduce((acc, val) => acc + val, 0).toFixed(2))}`} disabled className='bolder'/>
               </td>
               <td>
-                <input type="text" placeholder='$702,500' disabled className='bolder'/>
+              <input type="text" placeholder={`$${formatNumberWithCommas(currentLoan.reduce((acc, val) => acc + val, 0).toFixed(2))}`} disabled className='bolder'/>
               </td>
             </tr>
           </tbody>

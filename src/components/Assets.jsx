@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-const Assets = () => {
+const Assets = (props) => {
   const [currentValues, setCurrentValues] = useState([0,0,0,0,0,0,0,0,0,0,0]);
   const [currentLoan, setCurrentLoan] = useState([0,0,0,0,0,0,0,0,0,0,0]);
 
@@ -15,6 +15,16 @@ const Assets = () => {
     updatedCurrentLoan[index] = parseFloat(value) || 0;
     setCurrentLoan(updatedCurrentLoan);
   };
+  useEffect(() => {
+    if (props.onData) {
+      props.onData({
+        currentValues,
+        currentLoan,
+        EquityValue,
+        LVRValue: LVRValue(),
+      });
+    }
+  }, [currentValues, currentLoan]);
 
   const EquityValue = 
   (currentValues[0] - currentLoan[0]) + 
@@ -40,7 +50,7 @@ const Assets = () => {
     if (isNaN(total)) {
       return 0;
     } else {
-      return total;
+      return total.toFixed(2);
     }
   }
   return (
@@ -70,7 +80,7 @@ const Assets = () => {
                 <input type="text" placeholder='$50' value={`$${currentValues[0] - currentLoan[0]}`} disabled/>
               </td>
               <td>
-              <input type="text" value={`${currentValues[0] === 0 ? "#DIV/0!" : (currentValues[0]/currentLoan[0])}`} disabled/>
+              <input type="text" value={`${currentValues[0] === 0 ? "#DIV/0!" : (currentValues[0]/currentLoan[0]).toFixed(2)}`} disabled/>
               </td>
             </tr>
             
@@ -88,7 +98,7 @@ const Assets = () => {
               <input type="text" placeholder='$0' value={`$${currentValues[1] - currentLoan[1]}`} disabled/>
               </td>
               <td>
-              <input type="text" value={`${currentValues[1] === 0 ? "#DIV/0!" : (currentValues[1]/currentLoan[1])}`} disabled/>
+              <input type="text" value={`${currentValues[1] === 0 ? "#DIV/0!" : (currentValues[1]/currentLoan[1]).toFixed()}`} disabled/>
               </td>
             </tr>
 
@@ -106,7 +116,7 @@ const Assets = () => {
               <input type="text" placeholder='$0' value={`$${currentValues[2] - currentLoan[2]}`} disabled/>
               </td>
               <td>
-                <input type="text" placeholder='#DIV/0!' value={currentValues[2] === 0 ? "#DIV/0!" : (currentValues[2]/currentLoan[2])} disabled/>
+                <input type="text" placeholder='#DIV/0!' value={currentValues[2] === 0 ? "#DIV/0!" : (currentValues[2]/currentLoan[2]).toFixed(2)} disabled/>
               </td>
             </tr>
 
@@ -124,7 +134,7 @@ const Assets = () => {
               <input type="text" placeholder='$0' value={`$${currentValues[3] - currentLoan[3]}`} disabled/>
               </td>
               <td>
-              <input type="text" value={`${currentValues[3] === 0 ? "#DIV/0!" : (currentValues[3]/currentLoan[3])}`} disabled/>
+              <input type="text" value={`${currentValues[3] === 0 ? "#DIV/0!" : (currentValues[3]/currentLoan[3].toFixed(2))}`} disabled/>
               </td>
             </tr>
 
@@ -142,7 +152,7 @@ const Assets = () => {
               <input type="text" placeholder='$0' value={`$${currentValues[4] - currentLoan[4]}`} disabled/>
               </td>
               <td>
-              <input type="text" value={`${currentValues[4] === 0 ? "#DIV/0!" : (currentValues[4]/currentLoan[4])}`} disabled/>
+              <input type="text" value={`${currentValues[4] === 0 ? "#DIV/0!" : (currentValues[4]/currentLoan[4]).toFixed(2)}`} disabled/>
               </td>
             </tr>
 
@@ -160,7 +170,7 @@ const Assets = () => {
               <input type="text" placeholder='$0' value={`$${currentValues[5] - currentLoan[5]}`} disabled/>
               </td>
               <td>
-              <input type="text" value={`${currentValues[5] === 0 ? "#DIV/0!" : (currentValues[5]/currentLoan[5])}`} disabled/>
+              <input type="text" value={`${currentValues[5] === 0 ? "#DIV/0!" : (currentValues[5]/currentLoan[5]).toFixed(2)}`} disabled/>
               </td>
             </tr>
 
@@ -178,7 +188,7 @@ const Assets = () => {
               <input type="text" placeholder='$0' value={`$${currentValues[6] - currentLoan[6]}`} disabled/>
               </td>
               <td>
-              <input type="text" value={`${currentValues[6] === 0 ? "#DIV/0!" : (currentValues[6]/currentLoan[6])}`} disabled/>
+              <input type="text" value={`${currentValues[6] === 0 ? "#DIV/0!" : (currentValues[6]/currentLoan[6]).toFixed(2)}`} disabled/>
               </td>
             </tr>
 
@@ -196,7 +206,7 @@ const Assets = () => {
               <input type="text" placeholder='$0' value={`$${currentValues[7] - currentLoan[7]}`} disabled/>
               </td>
               <td>
-              <input type="text" value={`${currentValues[7] === 0 ? "#DIV/0!" : (currentValues[7]/currentLoan[7])}`} disabled/>
+              <input type="text" value={`${currentValues[7] === 0 ? "#DIV/0!" : (currentValues[7]/currentLoan[7]).toFixed(2)}`} disabled/>
               </td>
             </tr>
 
@@ -214,7 +224,7 @@ const Assets = () => {
               <input type="text" placeholder='$0' value={`$${currentValues[8] - currentLoan[8]}`} disabled/>
               </td>
               <td>
-              <input type="text" value={`${currentValues[8] === 0 ? "#DIV/0!" : (currentValues[8]/currentLoan[8])}`} disabled/>
+              <input type="text" value={`${currentValues[8] === 0 ? "#DIV/0!" : (currentValues[8]/currentLoan[8]).toFixed(2)}`} disabled/>
               </td>
             </tr>
 
@@ -232,7 +242,7 @@ const Assets = () => {
               <input type="text" placeholder='$0' value={`$${currentValues[9] - currentLoan[9]}`} disabled/>
               </td>
               <td>
-              <input type="text" value={`${currentValues[9] === 0 ? "#DIV/0!" : (currentValues[9]/currentLoan[9])}`} disabled/>
+              <input type="text" value={`${currentValues[9] === 0 ? "#DIV/0!" : (currentValues[9]/currentLoan[9]).toFixed(2)}`} disabled/>
               </td>
             </tr>
 
@@ -250,7 +260,7 @@ const Assets = () => {
               <input type="text" placeholder='$0' value={`$${currentValues[10] - currentLoan[10]}`} disabled/>
               </td>
               <td>
-              <input type="text" value={`${currentValues[10] === 0 ? "#DIV/0!" : (currentValues[10]/currentLoan[10])}`} disabled/>
+              <input type="text" value={`${currentValues[10] === 0 ? "#DIV/0!" : (currentValues[10]/currentLoan[10]).toFixed(2)}`} disabled/>
               </td>
             </tr>
 
